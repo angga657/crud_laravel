@@ -1,4 +1,4 @@
-@extends('barangs.layout')
+@extends('barang_keluars.layout')
   
 @section('content')
 
@@ -7,10 +7,10 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <center>
-            <h1>TAMBAH BARANG</h1>
+            <h1>TAMBAH Barang Keluar</h1>
         </center>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('barangs.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('barang_keluars.index') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -26,32 +26,44 @@
     </div>
 @endif
    
-<form action="{{ route('barangs.store') }}" method="POST">
+<form action="{{ route('barang_keluars.store') }}" method="POST">
     @csrf
   
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                <strong>No Transaksi Keluar :</strong>
+                <input type="text" name="no_transaksi_keluar" class="form-control" placeholder="No Transaksi Keluar">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>ID Barang :</strong>
+                <input type="text" name="id_barang" class="form-control" placeholder="ID Barang">
+            </div>
+        </div>
+        {{-- <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
                 <strong>Nama Barang :</strong>
                 <input type="text" name="nama_barang" class="form-control" placeholder="Nama Barang">
             </div>
-        </div>
+        </div> --}}
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Deskripsi :</strong>
-                <textarea class="form-control" style="height:150px" name="deskripsi" placeholder="Deskripsi"></textarea>
+                <strong>Tanggal Barang Keluar :</strong>
+                <input type="date"  name="tgl_keluar" class="form-control" placeholder="Tanggal Barang Keluar">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Jumlah Stok :</strong>
-                <input type="text" name="jumlah_stok" class="form-control" placeholder="Jumlah Stok">
+                <strong>Quantity Keluar :</strong>
+                <input type="text" name="qty_keluar" class="form-control" placeholder="Quantity Keluar">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Harga :</strong>
-                <input type="text" name="harga" class="form-control" placeholder="Harga">
+                <strong>Total Keluar :</strong>
+                <input type="text" name="total_keluar" class="form-control" placeholder="Total Keluar">
             </div>
         </div>
         

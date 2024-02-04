@@ -6,7 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\barangcontroller;
-use App\Http\Controllers\stok_barang_controller;
+use App\Http\Controllers\barang_masuk_controller;
+use App\Http\Controllers\barang_keluar_controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,15 +21,8 @@ use App\Http\Controllers\stok_barang_controller;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
-
-Route::resource('barangs', barangcontroller::class);
-
-Route::resource('stok_barangs', stok_barang_controller::class);
-
-
-
 // metode nya get lalu masukkan namespace AuthController 
 // attribute name merupakan penamaan dari route yang kita buat
 // kita tinggal panggil fungsi route(name) pada layout atau controller
@@ -46,8 +40,13 @@ Route::post('proses_register',[AuthController::class,'proses_register'])->name('
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_login:admin']], function () {
         Route::resource('admin', AdminController::class);
+
     });
     Route::group(['middleware' => ['cek_login:user']], function () {
         Route::resource('user', UserController::class);
     });
-});
+    Route::resource('barangs', barangcontroller::class);
+
+    Route::resource('barang_masuks', barang_masuk_controller::class);
+    Route::resource('barang_keluars', barang_keluar_controller::class);
+}); 

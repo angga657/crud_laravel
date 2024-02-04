@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\redirect;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -20,12 +20,12 @@ class AuthController extends Controller
              // jika user nya memiliki level admin
              if($user->level =='admin'){
                   // arahkan ke halaman admin ya :P
-                 return Redirect()->intended('admin');
+                 return redirect()->intended('admin');
              }
                // jika user nya memiliki level user
              else if($user->level =='user'){
                 // arahkan ke halaman user
-                 return Redirect()->intended('user');
+                 return redirect()->intended('user');
              }
  
          }
@@ -44,25 +44,25 @@ class AuthController extends Controller
            // ambil data request username & password saja 
             $credential = $request->only('username','password');
 
-        // cek jika data username dan password valid (sesuai) dengan data
+        // cek jika data username dan password valid (sesuai) dengan dataphp 
         if(Auth::attempt($credential)){
             // kalau berhasil simpan data user ya di variabel $user
              $user =  Auth::user();
              // cek lagi jika level user admin maka arahkan ke halaman admin
              if($user->level =='admin'){
-                 return Redirect()->intended('admin');
+                return redirect()->route('barangs.index');
  
              }
                  // tapi jika level user nya user biasa maka arahkan ke halaman user
                 else if($user->level =='user'){
-                 return Redirect()->intended('user');
+                return redirect()->route('barangs.index');
              }
               // jika belum ada role maka ke halaman /
-             return Redirect()->intended('/');
+            return redirect()->intended('/');
          }
          // jika ga ada data user yang valid maka kembalikan lagi ke halaman login
 // pastikan kirim pesan error juga kalau login gagal ya
-        return Redirect('login')
+        return redirect('login')
         ->withInput()
         ->withErrors(['login_gagal'=>'These credentials does not match our records']);
 

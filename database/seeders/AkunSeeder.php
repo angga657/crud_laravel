@@ -18,7 +18,7 @@ class AkunSeeder extends Seeder
         $user = [
             [
                 'username' => 'admin',
-                'name' => 'AkunAdmin',
+                'name' => 'Admin',
                 'email' => 'admin@gmail.com',
                 'level' => 'admin',
                 'password' => Hash::make('kilobait247')
@@ -26,7 +26,7 @@ class AkunSeeder extends Seeder
 
             [
                 'username' => 'user1',
-                'name' => 'AkunUser1',
+                'name' => 'User1',
                 'email' => 'user1@gmail.com',
                 'level' => 'user',
                 'password' => Hash::make('kilobait247')

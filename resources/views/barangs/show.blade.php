@@ -2,16 +2,17 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <h4>
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Show Barang</h2>
-            </div>
+            <center>
+                <h1> SHOW BARANG</h1>
+            </center>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('barangs.index') }}"> Back</a>
             </div>
         </div>
     </div>
-   
+   <br>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
@@ -28,10 +29,11 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Harga :</strong>
-                {{ $barang->harga }}
+                Rp.{{ Number_format ($barang->harga) }}
             </div>
         </div>
         
     </div>
+</h4>
 </div>
 @endsection
